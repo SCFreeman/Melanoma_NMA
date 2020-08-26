@@ -1,0 +1,6 @@
+This folder conatins the following files:
+  1. FE_model.txt - a file containing the WinBUGS NMA model code
+  2. fit_FE_model.R - a file which fits the NMA model in WinBUGS
+  3. nma_forest_plot.R - a file which creates a forest plot of the RMST results from fit_FE_model.R
+  4. rank_plot.R - a file which creates a plot of the probability of each treatment obtaining each rank based on the results from fit_FE_model.R
+  
