@@ -1,0 +1,7 @@
+This folder contains files for fitting a piecewise exponential model with no cut points. 
+
+The folder contains the following files:
+  1. FE_model.txt - this file contains the WinBUGS model code
+  2. piecewise_FE_model.R - this file fits the piecewise model in WinBUGS
+  3. survival_plot.R - this file creates a plot of the survival curves resulting from the model fitted in piecewise_FE_model.R
+  4. rank_plot.R - this file creates a plot of the probability of each treatment obtaining each rank resulting from the model fitted in piecewise_FE_model.R
