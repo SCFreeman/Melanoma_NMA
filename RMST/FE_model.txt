@@ -1,0 +1,39 @@
+# Normal likelihood, identity link
+# Fixed effect model for multi-arm trials
+
+model{                               # *** PROGRAM STARTS
+
+for(i in 1:ns){                      #   LOOP THROUGH STUDIES
+    mu[i] ~ dnorm(0,.0001)           # vague priors for all trial baselines
+    for (k in 1:na[i]) {             #  LOOP THROUGH ARMS
+        var[i,k] <- pow(se[i,k],2)   # calculate variances
+        prec[i,k] <- 1/var[i,k]      # set precisions
+        y[i,k] ~ dnorm(theta[i,k],prec[i,k]) 	# binomial likelihood
+        theta[i,k] <- mu[i] + d[t[i,k]] - d[t[i,1]]  	# model for linear predictor
+
+#Deviance contribution
+        dev[i,k] <- (y[i,k]-theta[i,k])*(y[i,k]-theta[i,k])*prec[i,k]
+      }
+
+#  summed residual deviance contribution for this trial
+    resdev[i] <- sum(dev[i,1:na[i]])       
+ }   
+
+totresdev <- sum(resdev[])            #Total Residual Deviance
+
+d[1]<-0       # treatment effect is zero for control arm
+
+# vague priors for treatment effects
+for (k in 2:nt){  
+	d[k] ~ dnorm(0,.0001) 
+	}
+
+# ranking on relative scale
+      for (k in 1:nt) {
+           rk[k] <- nt+1-rank(d[],k) 
+           best[k] <- equals(rk[k],1) #calculate probability that treat k is best
+      for (h in 1:nt){ 
+           prob[h,k] <- equals(rk[k],h) } # calculates probability that treat k is h-th best
+      }
+
+}                                     # *** PROGRAM ENDS                                                                              
