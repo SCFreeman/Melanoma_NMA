@@ -1,0 +1,7 @@
+This folder contains files for fitting a generalised gamma model with treatment modelled as a location and scale parameter
+
+The folder contains the following files:
+1. FE_model.txt - this file contains the WinBUGS model code  
+2. Gen_Gamma_FE.R - this file fits the piecewise model in WinBUGS and plots the resulting survival curves for each treatment  
+3. rank_plot.R - this file creates a plot of the probability of each treatment obtaining each rank resulting from the model fitted in Gen_Gamma_FE.R  
+4. auc.R - this file calculates the area under the survival curve for each iteration from WinBUGS
