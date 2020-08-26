@@ -1,0 +1,11 @@
+This folder contains the following files:
+DTIC_arms.R - an R file to create a plot of Kaplan-Meier survival from each trial with a dacarbazine arm
+KM_curve_by_trial.R - an R file to create Kaplan-Meier plots of survival from each trial
+log_log_plots.do - a Stata do file for creating a log-log plot to check the PH assumption for each trial
+netgraph.R - an R file to create the network plot
+netgraph_data.csv - a csv file containing the data needed to run netgraph.R
+PH_check.R - an R file to check the PH assumption in each trial
+Restricted_means_18m.R - an R file which calculates RMST at 18 months for each trial
+rmst_18.csv - the output from running Restricted_means_18m.R
+rmst_18_ci.R - an R file which calculates RMST at 18 months including confidence intervals for each trial
+rmst_18_plus_ci.csv - the output from running rmst_18_ci.R
