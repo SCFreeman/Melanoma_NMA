@@ -1,0 +1,3 @@
+In this folder anova_parameterisation_PE.R is an R file which converts the IPD data into the aggregate format needed for the piecewise models. 
+The file calls in anova_data.R which contains the function for converting IPD to aggregate data. 
+The resuting aggregate dataset is saved as melanoma_aggregate_data.csv.
