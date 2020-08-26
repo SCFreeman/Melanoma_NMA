@@ -1,0 +1,16 @@
+studyCode,Study,t1,t2,treat1,treat2,lab1,lab2,lhr,se
+1,BREAK-3,1,4,Dacarbazine,Dabrafenib,DTIC,DB,-0.194,0.176
+2,BRIM-3,1,6,Dacarbazine,Vemurafenib,DTIC,VM,-0.223,0.087
+3,CheckMate066,1,8,Dacarbazine,Nivolumab,DTIC,NIV,-0.769,0.125
+4,CheckMate067,10,8,Ipilimumab,Nivolumab,IPI,NIV,-0.407,0.102
+4,CheckMate067,10,9,Ipilimumab,Nivolumab + Ipilimumab,IPI,NIV + IPI,-0.606,0.107
+4,CheckMate067,8,9,Nivolumab,Nivolumab + Ipilimumab,NIV,NIV + IPI,-0.199,0.111
+5,CheckMate069,10,9,Ipilimumab,Nivolumab + Ipilimumab,IPI,NIV + IPI,-0.282,0.271
+6,coBRIM,6,7,Vemurafenib,Veurafenib + Cobimetinib,VM,VM + COB,-0.373,0.127
+7,COMBI-d,4,5,Dabrafenib,Dabrafenib + Trametinib,DB,DB + TR,-0.276,0.125
+8,COMBI-v,5,6,Dabrafenib + Trametinib,Vemurafenib,DB+TR,VM,0.339,0.135
+9,Hodi 2014,10,12,Ipilimumab,Ipilimumab + Sargramostin,IPI,IPI + SRG,-0.403,0.199
+10,Keynote006,10,11,Ipilimumab,Pembrolizumab,IPI,PEM,-0.314,0.095
+11,Ribas 2013,1,13,Dacarbazine,Tremelimumab,DTIC,TRL,-0.13,0.087
+12,Robert 2011,1,3,Dacarbazine,Ipilimumab + Dacarbazine,DTIC,IPI+ DTIC,-0.315,0.098
+13,Robert 2013,1,2,Dacarbazine,Selumetinib + Dacarbazine,DTIC,SEL + DTIC,-0.189,0.247
