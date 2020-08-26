@@ -1,0 +1,63 @@
+# Normal likelihood, identity link
+# Trial-level data given as treatment differences
+# Fixed effects model for multi-arm trials
+
+model{                               # *** PROGRAM STARTS
+
+for(i in 1:ns2) {                    # LOOP THROUGH 2-ARM STUDIES
+    y[i,2] ~ dnorm(delta[i,2],prec[i,2]) # normal likelihood for 2-arm trials
+#Deviance contribution for trial i
+    resdev[i] <- (y[i,2]-delta[i,2])*(y[i,2]-delta[i,2])*prec[i,2]
+  }
+
+for(i in (ns2+1):(ns2+ns3)) {        # LOOP THROUGH THREE-ARM STUDIES
+    for (k in 1:(na[i]-1)) {    # set variance-covariance matrix
+        for (j in 1:(na[i]-1)) {
+            Sigma[i,j,k] <- V[i]*(1-equals(j,k)) + var[i,k+1]*equals(j,k)
+          }
+      }
+    Omega[i,1:(na[i]-1),1:(na[i]-1)] <- inverse(Sigma[i,,])  #Precision matrix
+# multivariate normal likelihood for 3-arm trials   
+    y[i,2:na[i]] ~ dmnorm(delta[i,2:na[i]],Omega[i,1:(na[i]-1),1:(na[i]-1)]) 
+#Deviance contribution for trial i
+    for (k in 1:(na[i]-1)){  # multiply vector & matrix
+        ydiff[i,k]<- y[i,(k+1)] - delta[i,(k+1)]
+        z[i,k]<- inprod2(Omega[i,k,1:(na[i]-1)], ydiff[i,1:(na[i]-1)])
+      }
+    resdev[i]<- inprod2(ydiff[i,1:(na[i]-1)], z[i,1:(na[i]-1)])
+  }
+
+for(i in 1:(ns2+ns3)){                 #   LOOP THROUGH ALL STUDIES
+     for (k in 2:na[i]) {             #  LOOP THROUGH ARMS
+        var[i,k] <- pow(se[i,k],2)   # calculate variances
+        prec[i,k] <- 1/var[i,k]      # set precisions
+        delta[i,k] <-  d[t[i,k]] - d[t[i,1]]
+      }
+  }  
+ 
+totresdev <- sum(resdev[])            #Total Residual Deviance
+
+d[1]<-0       # treatment effect is zero for reference treatment
+
+# vague priors for treatment effects
+for (k in 2:nt){  
+	d[k] ~ dnorm(0,.0001) 
+}
+
+# convert to hr
+for (k in 2:nt){  
+	hrd[k] <- exp(d[k])
+}
+
+
+# ranking on relative scale
+      for (k in 1:nt) {
+           rk[k] <- rank(d[],k) # assumes events are “bad”
+           best[k] <- equals(rk[k],1) #calculate probability that treat k is best
+      for (h in 1:nt){ 
+           prob[h,k] <- equals(rk[k],h) } # calculates probability that treat k is h-th best
+      }
+
+
+
+}                                     # *** PROGRAM ENDS              
