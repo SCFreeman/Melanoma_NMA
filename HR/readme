@@ -3,6 +3,5 @@ This folder contains the following files and should be run in the following orde
   2. hr_data.csv - this file contains the ouput from cr_hr_data.csv
   3. FE_model.txt - this file contains the WinBUGS model code for the NMA 
   4. fit_model.R - this file fits the NMA model in WinBUGS
-  5. survival_plot.R - this file fits the survival curves based on the results from fit_model.R
+  5. survival_plot.R - this file fits the survival curves based on the results from fit_model.R and calculates the area under each survival curve
   6. rank_plot.R - this file creates a plot of the probability of each treatment obtaining each rank based on the results from fit_model.R
-  7. auc.R - this file calculates the area under the survival curve for each iteration from WinBUGS
