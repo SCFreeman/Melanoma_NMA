@@ -334,3 +334,25 @@ legend(0, -0.3,
 # save plot
 dev.copy(pdf, "survival_plot.pdf")
 dev.off()
+
+library(pracma)
+
+# Calculate AUC at 60 months
+graph60 <- graph_data[1:601, ]
+auc60 <- data.frame(trt=c(1:13), auc=NA)
+
+auc60$auc[1] <- trapz(graph60$time, graph60$trt1)
+auc60$auc[2] <- trapz(graph60$time, graph60$trt2)
+auc60$auc[3] <- trapz(graph60$time, graph60$trt3)
+auc60$auc[4] <- trapz(graph60$time, graph60$trt4)
+auc60$auc[5] <- trapz(graph60$time, graph60$trt5)
+auc60$auc[6] <- trapz(graph60$time, graph60$trt6)
+auc60$auc[7] <- trapz(graph60$time, graph60$trt7)
+auc60$auc[8] <- trapz(graph60$time, graph60$trt8)
+auc60$auc[9] <- trapz(graph60$time, graph60$trt9)
+auc60$auc[10] <- trapz(graph60$time, graph60$trt10)
+auc60$auc[11] <- trapz(graph60$time, graph60$trt11)
+auc60$auc[12] <- trapz(graph60$time, graph60$trt12)
+auc60$auc[13] <- trapz(graph60$time, graph60$trt13)
+
+write.csv(auc60, file="auc60.csv")
