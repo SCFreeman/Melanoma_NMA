@@ -2,7 +2,7 @@ This folder contains files for running the first order fixed effect fractional p
 
 The folder contains the following files:
 1. FE_1st_order_model.txt - this file contains the WinBUGS model code  
-2. FP_1st_order.R - this file runs the model in WinBUGS. Note: due to the arge number of iterations required for the fractional polynomial model to converge and the large number of parameters to save memory problems were encountered when running the model in WinBUGS from R. Therefore, the model was run directly in WinBUGS using the data and initial value files created in R. The results were saved as a .txt file in WinBUGS itself and coped into a .csv file so that they could be easily loaded into R. 
+2. FP_1st_order.R - this file runs the model in WinBUGS. Note: due to the large number of iterations required for the fractional polynomial model to converge and the large number of parameters to save memory problems were encountered when running the model in WinBUGS from R. Therefore, the model was run directly in WinBUGS using the data and initial value files created in R. The results were saved as a .txt file in WinBUGS itself and coped into a .csv file so that they could be easily loaded into R. 
 3. results.txt - a WinBUGS file containing the results
 4. results.csv - a csv file containing the results from results.txt
 5. survival_plot.R - this file creates a plot of the survival curves resulting from the model fitted in FP_1st_order.R and calculates the area under each survival curve at 60 months 
