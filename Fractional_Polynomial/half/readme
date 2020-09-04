@@ -6,4 +6,3 @@ The folder contains the following files:
 3. results.txt - a WinBUGS file containing the results
 4. results.csv - a csv file containing the results from results.txt
 5. survival_plot.R - this file creates a plot of the survival curves resulting from the model fitted in FP_1st_order.R and calculates the area under each survival curve at 60 months 
-6. rank_plot.R - this file creates a plot of the probability of each treatment obtaining each rank resulting from the model fitted in FP_1st_order.R
