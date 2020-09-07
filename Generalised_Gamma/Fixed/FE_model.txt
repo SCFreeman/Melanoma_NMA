@@ -22,8 +22,6 @@ model {
   
   #Fit data
   
-  #For hazard ratio reporting studies
-  
   for(ii in 1:LnObs ){
     
     Lmu[ii] <- alpha[Lstudy[ii]]*multi[ii] + beta[Ltx[ii]] - beta[Lbase[ii]] 
