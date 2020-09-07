@@ -1,0 +1,70 @@
+model {
+  
+  #Define Prior Distributions
+  
+  #On tx effect mean
+  
+  beta[1] <- 0
+  gamma[1] <- 0
+  
+  for (tt in 2:nTx){
+    
+    beta[tt]~dnorm(0,1.0E-4)
+    gamma[tt]~dnorm(0,1.0E-4)
+  }
+  
+  #On individual study baseline effect
+  
+  for(ss in 1:nStudies){
+    
+    alpha[ss] ~ dnorm(0,1.0E-4)
+    
+  }
+  
+  #Fit data
+  
+  for(ii in 1:LnObs ){
+    
+    Lmu[ii] <- alpha[Lstudy[ii]]*multi[ii] + beta[Ltx[ii]] - beta[Lbase[ii]] 
+    
+    Lprec[ii] <- 1/pow(Lse[ii],2)
+    
+    Lmean[ii] ~ dnorm(Lmu[ii],Lprec[ii])
+    
+  }
+
+ for(ii in 1:LnObs ){
+    
+    Lmu2[ii] <- alpha[Lstudy[ii]]*multi[ii] + gamma[Ltx[ii]] - gamma[Lbase[ii]] 
+    
+    Lprec2[ii] <- 1/pow(Lse2[ii],2)
+    
+    Lmean2[ii] ~ dnorm(Lmu2[ii],Lprec2[ii])
+    
+  }
+  
+  # Calculate AFTs
+  
+  for (hh in 1:nTx) {
+    
+   aft[hh] <- exp(beta[hh])
+   scale.aft[hh] <- exp(gamma[hh])
+    
+  }
+  
+  # Ranking plot
+  
+  for (ll in 1:nTx) {
+    
+    for (mm in 1:nTx) {
+      
+      rk.beta[ll,mm] <- equals(ranked(beta[],mm),beta[ll])
+      rk.gamma[ll,mm] <- equals(ranked(gamma[],mm),gamma[ll])
+    }
+    
+  }
+
+}
+
+
+
