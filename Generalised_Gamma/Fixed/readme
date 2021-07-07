@@ -1,4 +1,4 @@
-This folder contains files for fitting a generalised gamma model with treatment modelled as a location parameter
+This folder contains files for fitting a generalised gamma model with treatment modelled as a location parameter.
 
 The folder contains the following files:
 1. FE_model.txt - this file contains the WinBUGS model code  
