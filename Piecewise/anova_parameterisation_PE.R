@@ -7,7 +7,7 @@ library(doBy)
 # Start with empty environment
 rm(list = ls()) 
 
-# Set the workign directory
+# Set the working directory
 setwd("R:/SCFreeman/scf20/Melanoma_NMA/Piecewise")
 
 # Start with IPD data
